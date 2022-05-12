@@ -36,7 +36,7 @@ public class Sale {
 	 * @param notAlreadyInSale A boolean value depending on if the item is already a part of the sale or not. 
 	 * @param item The item that is getting added/updating the sale. 
 	 * @param quantity The quantity of a specified item. 
-	 * @return 
+	 * @return The information of the item entered.
 	 */
 	public String updateSale(boolean notAlreadyInSale, ItemDTO item, int quantity) {
 		if (notAlreadyInSale) saleList.add(item);
@@ -47,10 +47,9 @@ public class Sale {
 
 
 	private String displayItem(ItemDTO item, int quantity) {
-		String itemEnteredInformation = ("Product: " + OPENING_CURLY_BRACKET + "itemName: " + item.getItemName() + 
+		return "Product: " + OPENING_CURLY_BRACKET + "itemName: " + item.getItemName() + 
 		", Price: " + item.getPrice() + SWEDISH_CRONES + ", Running Total: " + 
-		getTemporaryRunningTotal(item, quantity) + SWEDISH_CRONES + CLOSING_CURLY_BRACKET);
-		return itemEnteredInformation;
+		getTemporaryRunningTotal(item, quantity) + SWEDISH_CRONES + CLOSING_CURLY_BRACKET;
 	}
 
 	private double getTemporaryRunningTotal(ItemDTO item, int quantity) {
@@ -96,7 +95,6 @@ public class Sale {
 		" VAT" + " = " + (totalPrice + totalVAT);
 	}
 
-
 	/**
 	 * Gets how much the customer pays and how much the customer gets in change. 
 	 * 
@@ -107,5 +105,4 @@ public class Sale {
 		return "Paid Amount: " + payAmount + SWEDISH_CRONES + " Change: " + 
 	    (payAmount - totalPrice - totalVAT) + SWEDISH_CRONES;
 	}
-
 }

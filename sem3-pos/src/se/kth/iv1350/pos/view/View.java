@@ -45,6 +45,6 @@ public class View {
 	private void endSale() {
 		payAmount = 500;
 		System.out.println(NEW_ROW + "Printing Receipt:");
-		contr.createReceipt(payAmount);	
+		contr.concludeSale(payAmount);	
 	}
 }

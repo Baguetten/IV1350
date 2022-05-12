@@ -34,7 +34,7 @@ public class Controller {
 	 * 
 	 * @param payAmount The customer specifies how much he wants to pay for the sale  
 	 */
-	public void createReceipt(double payAmount) {
+	public void concludeSale(double payAmount) {
 		receipt = new Receipt();
 		receiptToGetPrinted = receipt.generateReceipt(payAmount);
 		Printer.printReceipt(receiptToGetPrinted);
@@ -46,7 +46,7 @@ public class Controller {
 	 * 
 	 * @param itemIdentifier The identifier of a specific item.   
 	 * @param quantity The quantity of a specified item. 
-	 * @return 
+	 * @return Either returns that the item entered is invalid or the item information of the item entered if it is valid. 
 	 */
 	public String enterItem(int itemIdentifier, int quantity){
 		boolean notAlreadyInSale = sale.checkIfNotAlreadyInSale(itemIdentifier);
