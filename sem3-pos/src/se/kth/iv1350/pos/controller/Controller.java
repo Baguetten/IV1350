@@ -1,6 +1,7 @@
 package se.kth.iv1350.pos.controller;
 import se.kth.iv1350.pos.integration.ItemDTO;
 import se.kth.iv1350.pos.integration.ItemInventory;
+import se.kth.iv1350.pos.integration.Printer;
 import se.kth.iv1350.pos.model.Receipt;
 import se.kth.iv1350.pos.model.Sale;
 
@@ -12,6 +13,7 @@ public class Controller {
 	private static Sale sale;
 	private Receipt receipt;
 	private ItemDTO item;
+	private String receiptToGetPrinted;
 	
 	/**
 	 * Creates the inventory. This method must be called before entering any items in a sale. 
@@ -34,7 +36,8 @@ public class Controller {
 	 */
 	public void createReceipt(double payAmount) {
 		receipt = new Receipt();
-		receipt.generateReceipt(payAmount);		
+		receiptToGetPrinted = receipt.generateReceipt(payAmount);
+		Printer.printReceipt(receiptToGetPrinted);
 	}
 
 	/**
@@ -43,17 +46,17 @@ public class Controller {
 	 * 
 	 * @param itemIdentifier The identifier of a specific item.   
 	 * @param quantity The quantity of a specified item. 
+	 * @return 
 	 */
-	public void enterItem(int itemIdentifier, int quantity){
+	public String enterItem(int itemIdentifier, int quantity){
 		boolean notAlreadyInSale = sale.checkIfNotAlreadyInSale(itemIdentifier);
 		item = iteminventory.ItemInformation(itemIdentifier);
-		if (item == null) printInvalidItem();
-		else sale.updateSale(notAlreadyInSale, item, quantity);	
-			
+		if (item == null) return printInvalidItem();
+		else return sale.updateSale(notAlreadyInSale, item, quantity);
 	}
 
-	private void printInvalidItem() {
-		System.out.println("The item entered does not exist. Error 404");
+	private String printInvalidItem() {
+		return "The item entered does not exist. Error 404";
 	}
 
 	/**

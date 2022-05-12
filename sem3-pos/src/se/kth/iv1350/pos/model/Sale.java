@@ -36,19 +36,21 @@ public class Sale {
 	 * @param notAlreadyInSale A boolean value depending on if the item is already a part of the sale or not. 
 	 * @param item The item that is getting added/updating the sale. 
 	 * @param quantity The quantity of a specified item. 
+	 * @return 
 	 */
-	public void updateSale(boolean notAlreadyInSale, ItemDTO item, int quantity) {
+	public String updateSale(boolean notAlreadyInSale, ItemDTO item, int quantity) {
 		if (notAlreadyInSale) saleList.add(item);
 		IncreaseQuantityOfItemAndRunningTotal(item, quantity);
 		updateTotalPriceAndTotalVAT(item, quantity);
-		displayItem(item, quantity);
+		return displayItem(item, quantity);
 	}
 
 
-	private void displayItem(ItemDTO item, int quantity) {
-		System.out.println("Product: " + OPENING_CURLY_BRACKET + "itemName: " + item.getItemName() + 
+	private String displayItem(ItemDTO item, int quantity) {
+		String itemEnteredInformation = ("Product: " + OPENING_CURLY_BRACKET + "itemName: " + item.getItemName() + 
 		", Price: " + item.getPrice() + SWEDISH_CRONES + ", Running Total: " + 
 		getTemporaryRunningTotal(item, quantity) + SWEDISH_CRONES + CLOSING_CURLY_BRACKET);
+		return itemEnteredInformation;
 	}
 
 	private double getTemporaryRunningTotal(ItemDTO item, int quantity) {

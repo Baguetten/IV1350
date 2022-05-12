@@ -35,11 +35,11 @@ public class View {
 
 	private void enterItems() {
 		System.out.println("Entering the following items:");
-		contr.enterItem(1000, 3);
-		contr.enterItem(1001, 2);
-		contr.enterItem(1005, 1);
-		contr.enterItem(1004, 4);
-		contr.enterItem(1004, 3);
+		System.out.println(contr.enterItem(1003, 3));
+		System.out.println(contr.enterItem(1001, 2));
+		System.out.println(contr.enterItem(1005, 1));
+		System.out.println(contr.enterItem(1004, 4));
+		System.out.println(contr.enterItem(1004, 3));
 	}
 
 	private void endSale() {

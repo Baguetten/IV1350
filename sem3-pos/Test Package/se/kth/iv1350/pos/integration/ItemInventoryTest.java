@@ -27,11 +27,11 @@ class ItemInventoryTest {
 		validItemIdentifier = 1001;
 		itemFromItemInventory = itemInventory.ItemInformation(validItemIdentifier);
 		boolean expectedResult = true;
-		boolean result = CheckIfValidItemIdentifierRetrievesTheExpectedResult(itemFromItemInventory, itemTest);
+		boolean result = checkIfValidItemIdentifierRetrievesTheExpectedResult(itemFromItemInventory, itemTest);
 		assertEquals(expectedResult, result, "The correct item was not returned from the itemInventory.");
 	}
 	
-	private boolean CheckIfValidItemIdentifierRetrievesTheExpectedResult(ItemDTO itemFromItemInventory, ItemDTO itemTest) {
+	private boolean checkIfValidItemIdentifierRetrievesTheExpectedResult(ItemDTO itemFromItemInventory, ItemDTO itemTest) {
 		if(itemTest.getItemIdentifier() == itemFromItemInventory.getItemIdentifier() && 
 		itemTest.getItemName() == itemFromItemInventory.getItemName() && 
 		itemTest.getPrice() == itemFromItemInventory.getPrice() &&

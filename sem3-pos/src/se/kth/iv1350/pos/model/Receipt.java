@@ -18,19 +18,20 @@ public class Receipt {
 	 * This method consists of multiple string methods to gather all the information for the receipt.
 	 * 
 	 * @param payAmount How much the customer pays for the sale.
+	 * @return 
 	 */
-	public void generateReceipt(double payAmount) {
+	public String generateReceipt(double payAmount) {
 		sale = Controller.getSale();
 		saleTime = getSaleTime();
 		listOfEachItem = sale.getListOfEachItem();
 		totalVATAndPrice = sale.getTotalVATAndPrice(); 
 		amountPaidAndChange = sale.getAmountPaidAndChange(payAmount);
-		printReceipt();
+		return createFinalReceipt();
 	}
 
-	private void printReceipt() {
-		System.out.println(saleTime + NEW_ROW + listOfEachItem + 
-		NEW_ROW + totalVATAndPrice + NEW_ROW + amountPaidAndChange);
+	private String createFinalReceipt() {
+		return saleTime + NEW_ROW + listOfEachItem + 
+		NEW_ROW + totalVATAndPrice + NEW_ROW + amountPaidAndChange;
 	}
 
 	private String getSaleTime() {
